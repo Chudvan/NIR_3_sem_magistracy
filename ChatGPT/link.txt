@@ -1,0 +1,4 @@
+Диалог с ChatGPT (My) - https://chat.openai.com/share/766bc4e1-3123-4eff-909a-e6d1ce470d5e
+Промпт находится в файлах: dataset_description.txt и tasks.txt
+Диалог с ChatGPT (Pasha) - https://chat.openai.com/share/7353897e-3742-4e20-8518-e5726539edd9
+Collab - https://colab.research.google.com/drive/1bLaU8jquKP4o9wCJhtGKL1bGOWq14Csl?usp=sharing#scrollTo=m8Z9DCmpc5fL

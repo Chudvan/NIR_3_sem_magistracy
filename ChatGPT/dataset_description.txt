@@ -1,0 +1,195 @@
+Описание датасета:
+
+1) Датасет содержит столбцы из списков facs_fields, pa_fields, seven_fields: 
+
+facs_fields = [
+'Action_Unit_01___Inner_Brow_Raiser',
+'Action_Unit_02___Outer_Brow_Raiser','Action_Unit_04___Brow_Lowerer',
+'Action_Unit_05___Upper_Lid_Raiser',
+'Action_Unit_06___Cheek_Raiser',
+'Action_Unit_07___Lid_Tightener',
+'Action_Unit_09___Nose_Wrinkler',
+'Action_Unit_10___Upper_Lip_Raiser',
+'Action_Unit_12___Lip_Corner_Puller',
+'Action_Unit_14___Dimpler',
+'Action_Unit_15___Lip_Corner_Depressor',
+'Action_Unit_17___Chin_Raiser',
+'Action_Unit_18___Lip_Pucker',
+'Action_Unit_20___Lip_Stretcher',
+'Action_Unit_23___Lip_Tightener',
+'Action_Unit_24___Lip_Pressor',
+'Action_Unit_25___Lips_Part',
+'Action_Unit_26___Jaw_Drop',
+'Action_Unit_27___Mouth_Stretch',
+'Action_Unit_43___Eyes_Closed',
+'Action_Unit_01___Left___Inner_Brow_Raiser',
+'Action_Unit_02___Left___Outer_Brow_Raiser',
+'Action_Unit_04___Left___Brow_Lowerer',
+'Action_Unit_05___Left___Upper_Lid_Raiser',
+'Action_Unit_06___Left___Cheek_Raiser',
+'Action_Unit_07___Left___Lid_Tightener',
+'Action_Unit_12___Left___Lip_Corner_Puller',
+'Action_Unit_14___Left___Dimpler',
+'Action_Unit_15___Left___Lip_Corner_Depressor',
+'Action_Unit_20___Left___Lip_Stretcher',
+'Action_Unit_43___Left___Eyes_Closed',
+'Action_Unit_01___Right___Inner_Brow_Raiser',
+'Action_Unit_02___Right___Outer_Brow_Raiser',
+'Action_Unit_04___Right___Brow_Lowerer',
+'Action_Unit_05___Right___Upper_Lid_Raiser',
+'Action_Unit_06___Right___Cheek_Raiser',
+'Action_Unit_07___Right___Lid_Tightener',
+'Action_Unit_12___Right___Lip_Corner_Puller',
+'Action_Unit_14___Right___Dimpler',
+'Action_Unit_15___Right___Lip_Corner_Depressor',
+'Action_Unit_20___Right___Lip_Stretcher',
+'Action_Unit_43___Right___Eyes_Closed'
+]
+
+pa_fields = [
+    'Valence',
+    'Arousal'
+]
+
+seven_fields = [
+    'Neutral', 
+    'Happy', 
+    'Sad', 
+    'Angry', 
+    'Surprised', 
+    'Scared', 
+    'Disgusted'
+]
+
+2) Все необходимые столбцы указаны в списке fields:
+
+fields = seven_fields + pa_fields + facs_fields
+
+3) Значения данных в столбцах из списков facs_fields и seven_fields имеют тип float и могут находиться в отрезке [0;1]
+4) Значения данных в столбцах из списка pa_fields имеют тип float и могут находиться в отрезке [-1;1]
+5) Известно, что между некоторыми признаками facs_fields и seven_fields есть зависимости (формульные). Например между:
+
+а) // формула 6 + 12 = Happy
+подмножеством признаков facs_fields: 
+
+[
+'Action_Unit_06___Cheek_Raiser',
+'Action_Unit_06___Left___Cheek_Raiser',
+'Action_Unit_06___Right___Cheek_Raiser',
+'Action_Unit_12___Lip_Corner_Puller',
+'Action_Unit_12___Left___Lip_Corner_Puller',
+'Action_Unit_12___Right___Lip_Corner_Puller'
+]
+
+и признаком 'Happy'
+
+б) // формула 1 + 4 + 15 = Sad
+подмножеством признаков facs_fields: 
+
+[
+'Action_Unit_01___Inner_Brow_Raiser',
+'Action_Unit_01___Left___Inner_Brow_Raiser',
+'Action_Unit_01___Right___Inner_Brow_Raiser',
+'Action_Unit_04___Brow_Lowerer',
+'Action_Unit_04___Left___Brow_Lowerer',
+'Action_Unit_04___Right___Brow_Lowerer',
+'Action_Unit_15___Lip_Corner_Depressor',
+'Action_Unit_15___Left___Lip_Corner_Depressor',
+'Action_Unit_15___Right___Lip_Corner_Depressor'
+]
+
+и признаком 'Sad'
+
+в) // формула 1 + 2 + 5 + 26 = Surprised
+подмножеством признаков facs_fields: 
+
+[
+'Action_Unit_01___Inner_Brow_Raiser',
+'Action_Unit_01___Left___Inner_Brow_Raiser',
+'Action_Unit_01___Right___Inner_Brow_Raiser',
+'Action_Unit_02___Outer_Brow_Raiser',
+'Action_Unit_02___Left___Outer_Brow_Raiser',
+'Action_Unit_02___Right___Outer_Brow_Raiser',
+'Action_Unit_05___Upper_Lid_Raiser',
+'Action_Unit_05___Left___Upper_Lid_Raiser',
+'Action_Unit_05___Right___Upper_Lid_Raiser',
+'Action_Unit_26___Jaw_Drop'
+]
+
+и признаком 'Surprised'
+
+г) // формула 1 + 2 + 4 + 5 + 7 + 20 + 26 = Scared
+подмножеством признаков facs_fields: 
+
+[
+'Action_Unit_01___Inner_Brow_Raiser',
+'Action_Unit_01___Left___Inner_Brow_Raiser',
+'Action_Unit_01___Right___Inner_Brow_Raiser',
+'Action_Unit_02___Outer_Brow_Raiser',
+'Action_Unit_02___Left___Outer_Brow_Raiser',
+'Action_Unit_02___Right___Outer_Brow_Raiser',
+'Action_Unit_04___Brow_Lowerer',
+'Action_Unit_04___Left___Brow_Lowerer',
+'Action_Unit_04___Right___Brow_Lowerer',
+'Action_Unit_05___Upper_Lid_Raiser',
+'Action_Unit_05___Left___Upper_Lid_Raiser',
+'Action_Unit_05___Right___Upper_Lid_Raiser',
+'Action_Unit_07___Lid_Tightener',
+'Action_Unit_07___Left___Lid_Tightener',
+'Action_Unit_07___Right___Lid_Tightener',
+'Action_Unit_20___Lip_Stretcher',
+'Action_Unit_20___Left___Lip_Stretcher',
+'Action_Unit_20___Right___Lip_Stretcher',
+'Action_Unit_26___Jaw_Drop'
+]
+
+и признаком 'Scared'
+
+д) // формула 4 + 5 + 7 + 23 = Angry
+подмножеством признаков facs_fields: 
+
+[
+'Action_Unit_04___Brow_Lowerer',
+'Action_Unit_04___Left___Brow_Lowerer',
+'Action_Unit_04___Right___Brow_Lowerer',
+'Action_Unit_05___Upper_Lid_Raiser',
+'Action_Unit_05___Left___Upper_Lid_Raiser',
+'Action_Unit_05___Right___Upper_Lid_Raiser',
+'Action_Unit_07___Lid_Tightener',
+'Action_Unit_07___Left___Lid_Tightener',
+'Action_Unit_07___Right___Lid_Tightener',
+'Action_Unit_23___Lip_Tightener'
+]
+
+и признаком 'Angry'
+
+е) // формула 9 + 15 + 16 = Disgusted // action unit = 16 - не существует.
+подмножеством признаков facs_fields: 
+
+[
+'Action_Unit_09___Nose_Wrinkler',
+'Action_Unit_15___Lip_Corner_Depressor',
+'Action_Unit_15___Left___Lip_Corner_Depressor',
+'Action_Unit_15___Right___Lip_Corner_Depressor'
+]
+
+и признаком 'Disgusted'
+
+ё) // формула 12 + 14 ~= Disgusted
+подмножеством признаков facs_fields: 
+
+[
+'Action_Unit_12___Lip_Corner_Puller',
+'Action_Unit_12___Left___Lip_Corner_Puller',
+'Action_Unit_12___Right___Lip_Corner_Puller',
+'Action_Unit_14___Dimpler',
+'Action_Unit_14___Left___Dimpler',
+'Action_Unit_14___Right___Dimpler'
+]
+
+и признаком 'Disgusted'
+
+6) Выдвинута гипотеза, что признаки из списка pa_fields получены с помощью метода МГК (PCA) из признаков seven_fields 
+7) столбцы facs_fields содержат данные из 42-мерного пространства Facial Action Coding System (FACS) // action units
+8) столбцы seven_fields содержат данные из 6-мерного пространства Пола Экмана (6 эмоций + Neutral)
+9) столбцы pa_fields содержат данные из 2-мерного пространства Valence-Arousal (или Pleasure-Arousal). Это пространство является подпространством VAD (PAD) // координата Dominance опущена.
